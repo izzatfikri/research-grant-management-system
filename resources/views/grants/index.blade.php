@@ -39,6 +39,7 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group">  
+                        <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>  
                         <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-warning">Edit</a>  
                             <form action="{{ route('grants.destroy', $grant->id) }}" method="POST" style="display: inline;">
                                 @csrf

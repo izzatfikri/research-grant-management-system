@@ -83,7 +83,9 @@ class GrantController extends Controller
      */
     public function show(Grant $grant)
     {
-        //
+        // Tunjuk projec member
+        $members = $grant->academicians()->wherePivot('role', 'member')->get();
+        return view('grants.show', compact('grant', 'members'));
     }
 
     /**
@@ -91,7 +93,9 @@ class GrantController extends Controller
      */
     public function edit(Grant $grant)
     {
-        //
+        $members = $grant->academicians()->wherePivot('role', 'member')->get();
+        $allAcademicians = Academician::all(); // Assuming you want to list all academicians for selection
+        return view('grants.edit', compact('grant', 'members', 'allAcademicians'));
     }
 
     /**
@@ -99,7 +103,49 @@ class GrantController extends Controller
      */
     public function update(Request $request, Grant $grant)
     {
-        //
+        $validated = $request->validate([
+            'grant_amount' => 'required|numeric',
+            'grant_provider' => 'required|string|max:255',
+            'project_title' => 'required|string|max:255',
+            'project_description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'duration' => 'required|numeric',
+            'members' => 'array', // Changed from 'required|array' to 'array' to allow only leader
+        ]);
+    
+        // **Important:** Remove the following line to allow the method to continue
+        // return $request->members;
+    
+        // Retrieve selected member IDs from the request. Defaults to an empty array if none are selected.
+        $selectedMemberIds = $request->input('members', []);
+    
+        // Prepare sync data with roles
+        $syncData = [];
+    
+        foreach ($selectedMemberIds as $memberId) {
+            $syncData[$memberId] = ['role' => 'member'];
+        }
+    
+        // Retrieve the current leader
+        $leader = $grant->academicians()->wherePivot('role', 'leader')->first();
+    
+        if ($leader) {
+            // Ensure the leader is always included in the sync data with the role 'leader'
+            $syncData[$leader->id] = ['role' => 'leader'];
+        }
+    
+        // Sync project members with roles. This will:
+        // - Add new members
+        // - Update roles of existing members
+        // - Remove members not present in $syncData (except the leader)
+        $grant->academicians()->sync($syncData);
+    
+        // Update the grant with validated data
+        $grant->update($validated);
+    
+        // Redirect to the grants index page with a success message
+        return redirect()->route('grants.index')->with('success', 'Grant updated successfully.');
     }
 
     /**
@@ -107,6 +153,8 @@ class GrantController extends Controller
      */
     public function destroy(Grant $grant)
     {
-        //
+        $grant->delete();
+        // Redirect to the grants index page with a success message
+        return redirect()->route('grants.index')->with('success', 'Grant deleted successfully.');
     }
 }
