@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Milestone;
 use Illuminate\Http\Request;
+use App\Models\Grant;
 
 class MilestoneController extends Controller
 {
@@ -12,7 +13,8 @@ class MilestoneController extends Controller
      */
     public function index()
     {
-        //
+        $milestones = Milestone::all();
+        return view('milestones.index', compact('milestones'));
     }
 
     /**
@@ -20,7 +22,8 @@ class MilestoneController extends Controller
      */
     public function create()
     {
-        //
+        $grants = Grant::all();
+        return view('milestones.create', compact('grants'));
     }
 
     /**
@@ -28,7 +31,18 @@ class MilestoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'milestone_title' => 'required|string|max:255',
+            'completion_date' => 'required|date',
+            'deliverable' => 'required|string',
+            'status' => 'required|string',
+            'remarks' => 'required|string',
+            'grant_id' => 'required|exists:grants,id',
+        ]);
+
+        Milestone::create($validated);
+
+        return redirect()->route('milestones.index')->with('success', 'Milestone created successfully.');
     }
 
     /**
@@ -36,7 +50,7 @@ class MilestoneController extends Controller
      */
     public function show(Milestone $milestone)
     {
-        //
+        return view('milestones.show', compact('milestone'));
     }
 
     /**
@@ -44,7 +58,7 @@ class MilestoneController extends Controller
      */
     public function edit(Milestone $milestone)
     {
-        //
+        return view('milestones.edit', compact('milestone'));
     }
 
     /**
@@ -52,7 +66,14 @@ class MilestoneController extends Controller
      */
     public function update(Request $request, Milestone $milestone)
     {
-        //
+        $validated = $request->validate([
+            'status' => 'required|string',
+            'remarks' => 'required|string',
+        ]);
+
+        $milestone->update($validated);
+
+        return redirect()->route('milestones.index')->with('success', 'Milestone updated successfully');
     }
 
     /**
@@ -60,6 +81,7 @@ class MilestoneController extends Controller
      */
     public function destroy(Milestone $milestone)
     {
-        //
+        $milestone->delete();
+        return redirect()->route('milestones.index')->with('success', 'Milestone deleted successfully.');
     }
 }
