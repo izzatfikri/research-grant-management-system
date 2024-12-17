@@ -12,3 +12,7 @@ Route::get('/', function () {
 Route::resource('academicians', AcademicianController::class);
 Route::resource('grants', GrantController::class);
 Route::resource('milestones', MilestoneController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
