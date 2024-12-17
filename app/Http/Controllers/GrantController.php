@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GrantController extends Controller
 {
@@ -12,7 +13,16 @@ class GrantController extends Controller
      */
     public function index()
     {
-        //
+        /*
+        $user = Auth::user();
+        $grants = Grant::whereHas('academicians', function ($query) use ($user) {
+            $query->where('user_id', $user->id)
+                  ->where('role', 'leader');
+        })->get();*/
+
+        $grants = Grant::all();
+
+        return view('grants.index', compact('grants'));
     }
 
     /**
