@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('grants', function (Blueprint $table) {
             $table->id();
+            $table->double('grant_amount');
+            $table->string('grant_provider');
+            $table->string('project_title');
+            $table->string('project_description');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
