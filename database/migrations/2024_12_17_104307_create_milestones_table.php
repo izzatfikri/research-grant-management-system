@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('milestones', function (Blueprint $table) {
             $table->id();
+            $table->string('milestone_title');
+            $table->date('completion_date');
+            $table->string('deliverable');
+            $table->string('status');
+            $table->string('remarks');
             $table->timestamps();
         });
     }
