@@ -8,6 +8,15 @@ use App\Models\Academician;
 
 class AdminController extends Controller
 {
+
+    public function index(){
+       //
+    }
+
+    public function create(){
+        return view('admin.create-academician');
+    }
+
     public function createAcademician(Request $request)
     {
         // Step 1: Validate the incoming request

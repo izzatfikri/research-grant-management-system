@@ -40,5 +40,5 @@
         <input type="text" name="position" required>
     </div>
 
-    <button type="submit">Create Project Leader</button>
+    <button type="submit">Create Academician</button>
 </form>
