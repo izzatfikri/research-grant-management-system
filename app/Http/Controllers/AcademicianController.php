@@ -37,7 +37,7 @@ class AcademicianController extends Controller
      */
     public function show(Academician $academician)
     {
-        //
+        return view('academicians.show', compact('academician'));
     }
 
     /**
@@ -45,7 +45,7 @@ class AcademicianController extends Controller
      */
     public function edit(Academician $academician)
     {
-        //
+        
     }
 
     /**
