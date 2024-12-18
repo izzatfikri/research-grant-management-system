@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <a href="{{ route('admin.createAcademician') }}" class="btn btn-primary mb-3">Add New Academician</a>
+    <a href="{{ route('academicians.create') }}" class="btn btn-primary mb-3">Add New Academician</a>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" style="background-color: #f2f2f2;">
