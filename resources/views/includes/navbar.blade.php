@@ -9,7 +9,7 @@
             <a href=".">
             <!-- This SVG kinda problem, when i copy the book.svg and paste into logo.svg, the logo can appear, but if i put on book.svg it not appear -->
             <div class="navbar-brand">
-            <img src="./static/logo.svg" width="150" height="auto" alt="Tabler" class="navbar-brand-image">
+            <img src="/static/logo.svg" width="150" height="auto" alt="Tabler" class="navbar-brand-image">
             <h2 style="margin: left 10px; padding-top: 25px;">ResearchGrant Hub</h2>
             </div>
             <!--<img src="./static/book.svg" width="150" height="auto" alt="Tabler" class="navbar-brand-image">-->
@@ -130,7 +130,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(/static/avatars/000m.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Paweł Kuna</div>
                   <div class="mt-1 small text-secondary">UI Designer</div>
@@ -283,7 +283,7 @@
                 </li>
               </ul>
               <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                <form action="./" method="get" autocomplete="off" novalidate>
+                <form action="/" method="get" autocomplete="off" novalidate>
                   <div class="input-icon">
                     <span class="input-icon-addon">
                       <!-- Download SVG icon from http://tabler-icons.io/i/search -->
