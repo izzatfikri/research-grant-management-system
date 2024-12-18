@@ -1,27 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.tabler-template')
+@section('title', 'Grants')
 @section('content')
-    <div class=container-fluid>
-    <h1>Grants List</h1>
-    <a href="{{ route('grants.create') }}" class="btn btn-primary">Create Grant</a>
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h1>Grants List</h1>
+        </div>
+    </div>
+
+    <a href="{{ route('grants.create') }}" class="btn btn-primary mb-3">Create Grant</a>
+
     <div class="table-responsive">
-    <table border="1" class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Grant Amount</th>
-                <th>Grant Provider</th>
-                <th>Project Title</th>
-                <th>Project Description</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Duration</th>
-                <th>Project Leader</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($grants as $grant)
+        <table class="table table-striped table-bordered table-hover" style="background-color: #f2f2f2;">
+            <thead>
                 <tr>
+                    <th>ID</th>
+                    <th>Grant Amount</th>
+                    <th>Grant Provider</th>
+                    <th>Project Title</th>
+                    <th>Project Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Duration</th>
+                    <th>Project Leader</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($grants as $index => $grant)
+                <tr class="{{ $index % 2 == 0 ? 'bg-light' : 'bg-white' }}">
                     <td>{{ $grant->id }}</td>
                     <td>{{ $grant->grant_amount }}</td>
                     <td>{{ $grant->grant_provider }}</td>
@@ -38,9 +45,9 @@
                         @endif
                     </td>
                     <td>
-                        <div class="btn-group" role="group">  
-                        <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>  
-                        <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-warning">Edit</a>  
+                        <div class="btn-group" role="group">
+                            <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
+                            <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('grants.destroy', $grant->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
@@ -49,9 +56,13 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @empty
+                <tr>
+                    <td colspan="10" class="text-center">No data found</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-    </div>
+</div>
 @endsection
