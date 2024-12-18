@@ -60,7 +60,7 @@ class AcademicianController extends Controller
         ]);
 
         // Step 4: Redirect or return a response
-        return redirect()->route('academicans.index')->with('success', 'Academician Created Successfully');
+        return redirect()->route('academicians.index')->with('success', 'Academician Created Successfully');
     }
 
     /**

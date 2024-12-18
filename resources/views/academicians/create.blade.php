@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.tabler-template')
+@section('title', 'Academicians')
 @section('content')
 <div class="container mt-5">
     <div class="card">
