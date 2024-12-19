@@ -14,6 +14,11 @@ class Grant extends Model
             ->withPivot('role')
             ->withTimestamps();
     }
+
+    public function milestones(){
+        return $this->hasMany(Milestone::class);
+    }
+
     public function leader()
     {
         return $this->academicians()->wherePivot('role', 'leader')->first();

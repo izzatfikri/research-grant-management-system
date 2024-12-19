@@ -6,6 +6,7 @@ use App\Models\Grant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Academician;
+use App\Models\Milestone;
 
 class GrantController extends Controller
 {
@@ -85,7 +86,8 @@ class GrantController extends Controller
     {
         // Tunjuk projec member
         $members = $grant->academicians()->wherePivot('role', 'member')->get();
-        return view('grants.show', compact('grant', 'members'));
+        $milestones = $grant->milestones()->get();
+        return view('grants.show', compact('grant', 'members', 'milestones'));
     }
 
     /**

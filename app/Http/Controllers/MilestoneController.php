@@ -42,7 +42,7 @@ class MilestoneController extends Controller
 
         Milestone::create($validated);
 
-        return redirect()->route('milestones.index')->with('success', 'Milestone created successfully.');
+        return redirect()->back()->with('success', 'Milestone created successfully.');
     }
 
     /**
