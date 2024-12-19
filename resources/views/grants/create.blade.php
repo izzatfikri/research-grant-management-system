@@ -61,6 +61,9 @@
             </form>
         </div>
     </div>
+    <div class="mt-3">
+    <a href="{{ route('grants.index') }}" class="btn btn-primary mt-4">Back to Grants</a>
+    </div>
 </div>
 
 <script>

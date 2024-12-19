@@ -176,7 +176,7 @@
                   <div class="dropdown-menu">
                     <div class="dropdown-menu-columns">
                       <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="./alerts.html">
+                        <!--<a class="dropdown-item" href="./alerts.html">
                         Create Grant
                         </a>
                         <a class="dropdown-item" href="./alerts.html">
@@ -184,7 +184,7 @@
                         </a>
                         <a class="dropdown-item" href="./alerts.html">
                         Delete Grant
-                        </a>
+                        </a>-->
                         <a class="dropdown-item" href="{{ route('grants.index') }}">
                         List of All Grants
                         </a>
