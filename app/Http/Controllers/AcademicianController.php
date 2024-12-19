@@ -104,6 +104,7 @@ class AcademicianController extends Controller
     public function destroy(Academician $academician)
     {
         $academician->delete();
+        $academician->user->delete();  // Delete the user associated with the academician
 
         return redirect()->route('academicians.index')->with('success', 'Academician deleted successfully.');
     }

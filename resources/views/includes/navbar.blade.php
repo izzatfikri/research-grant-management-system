@@ -229,9 +229,6 @@
                   <div class="dropdown-menu">
                     <div class="dropdown-menu-columns">
                       <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="">
-                        Create Staff
-                        </a>
                         <a class="dropdown-item" href="{{ route('academicians.index') }}">
                         Academicians
                         </a>
