@@ -205,7 +205,7 @@
                   <div class="dropdown-menu">
                     <div class="dropdown-menu-columns">
                       <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="./alerts.html">
+                        <a class="dropdown-item" href="{{ route('projects.index') }}">
                         List of All Projects
                         </a>
                         <a class="dropdown-item" href="{{ route('milestones.index') }}">
