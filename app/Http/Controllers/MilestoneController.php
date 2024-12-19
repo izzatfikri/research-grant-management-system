@@ -73,7 +73,7 @@ class MilestoneController extends Controller
 
         $milestone->update($validated);
 
-        return redirect()->route('milestones.index')->with('success', 'Milestone updated successfully');
+        return redirect()->back()->with('success', 'Milestone updated successfully');
     }
 
     /**

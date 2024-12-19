@@ -34,6 +34,8 @@
                     <th>Completion Date</th>
                     <th>Status</th>
                     <th>Remarks</th>
+                    <th>Date Updated</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,10 +47,14 @@
                     <td>{{ $milestone->completion_date }}</td>
                     <td>{{ $milestone->status }}</td>
                     <td>{{ $milestone->remarks }}</td>
+                    <td>{{ $milestone->updated_at }}</td>
+                    <td>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#update-milestone-{{ $milestone->id }}" class="btn btn-primary">Edit</a>
+                    </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center">No data found</td>
+                    <td colspan="6" class="text-center">No data found</td>
                 </tr>
                 @endforelse
             </table>
@@ -105,3 +111,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Update milestone status and remarks modal -->
+    @foreach($milestones as $milestone)
+    <div class="modal modal-blur fade" id="update-milestone-{{ $milestone->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Milestone</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('milestones.update', $milestone->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status" required>
+                                <option value="Pending" {{ $milestone->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="Completed" {{ $milestone->status == 'Completed' ? 'selected' : '' }}>Completed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Remarks</label>
+                            <textarea class="form-control" name="remarks" rows="3" placeholder="Remarks">{{ $milestone->remarks }}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary ms-auto">Update Milestone</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
