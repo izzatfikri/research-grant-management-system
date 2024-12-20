@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('userCategory')->nullable()->default('academician');
+            $table->string('userCategory')->nullable();
+            $table->string('staff_number')->nullable();
             $table->string('userLevel')->nullable();
         });
     }
@@ -24,6 +25,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('userCategory');
+            $table->dropColumn('staff_number');
             $table->dropColumn('userLevel');
         });
     }
