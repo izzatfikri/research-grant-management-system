@@ -53,7 +53,8 @@ class StaffController extends Controller
      */
     public function show(string $id)
     {
-
+        $staff = User::find($id);
+        return view('staffs.show', compact('staff'));
     }
 
     /**
