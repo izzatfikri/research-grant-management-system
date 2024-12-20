@@ -12,6 +12,8 @@ class StaffController extends Controller
      */
     public function index()
     {
+        $staffs = User::where('userCategory', 'staff')->get();
+        return view('staffs.index', compact('staffs'));
     }
 
     /**
@@ -19,7 +21,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staffs.create');
     }
 
     /**
@@ -27,7 +29,23 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'userCategory' => 'required|string|max:255',
+            'staff_number' => 'required|string|unique:users',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'userCategory' => 'staff',
+            'staff_number' => $request->staff_number,
+        ]);
+
+        return redirect()->route('staffs.index');
     }
 
     /**
@@ -35,7 +53,7 @@ class StaffController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -43,7 +61,7 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
@@ -59,6 +77,6 @@ class StaffController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }

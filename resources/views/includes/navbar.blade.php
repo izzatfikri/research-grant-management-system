@@ -232,7 +232,7 @@
                         <a class="dropdown-item" href="{{ route('academicians.index') }}">
                         Academicians
                         </a>
-                        <a class="dropdown-item" href="./alerts.html">
+                        <a class="dropdown-item" href="{{ route('staffs.index') }}">
                         IRMC Staff
                         </a>
                       </div>
