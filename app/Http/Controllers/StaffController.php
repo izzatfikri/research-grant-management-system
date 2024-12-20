@@ -62,7 +62,8 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $staff = User::find($id);
+        return view('staffs.edit', compact('staff'));
     }
 
     /**
@@ -70,7 +71,20 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
+            'staff_number' => 'required|string|unique:users,staff_number,'.$id,
+        ]);
+
+        $staff = User::find($id);
+        $staff->name = $request->name;
+        $staff->email = $request->email;
+        $staff->staff_number = $request->staff_number;
+
+        $staff->save();
+
+        return redirect()->route('staffs.index');
     }
 
     /**
@@ -78,6 +92,8 @@ class StaffController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $staff = User::find($id);
+        $staff->delete();
+        return redirect()->route('staffs.index');
     }
 }
