@@ -8,7 +8,9 @@
         </div>
     </div>
 
+    @can('isAdmin', App\Models\User::class)
     <a href="{{ route('grants.create') }}" class="btn btn-primary mb-3">Create Grant</a>
+    @endcan
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" style="background-color: #f2f2f2;">
@@ -48,11 +50,13 @@
                         <div class="btn-group" role="group">
                             <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
                             <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-warning">Edit</a>
+                            @can('isAdmin', App\Models\User::class)
                             <form action="{{ route('grants.destroy', $grant->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this grant?')">Delete</button>
                             </form>
+                            @endcan
                         </div>
                     </td>
                 </tr>

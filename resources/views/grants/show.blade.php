@@ -23,7 +23,9 @@
             </ul>
 
             <h2 class="mt-4">Milestones</h2>
+            @can('isAcademician', App\Models\User::class)
             <a href="#" class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#create-milestone">Add Milestone</a>
+            @endcan
             <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover" style="background-color: #f2f2f2;"> 
             <thead>
@@ -35,7 +37,9 @@
                     <th>Status</th>
                     <th>Remarks</th>
                     <th>Date Updated</th>
+                    @can('isAcademician', App\Models\User::class)
                     <th>Action</th>
+                    @endcan
                 </tr>
             </thead>
             <tbody>
@@ -48,9 +52,11 @@
                     <td>{{ $milestone->status }}</td>
                     <td>{{ $milestone->remarks }}</td>
                     <td>{{ $milestone->updated_at }}</td>
+                    @can('isAcademician', App\Models\User::class)
                     <td>
                         <a href="" data-bs-toggle="modal" data-bs-target="#update-milestone-{{ $milestone->id }}" class="btn btn-primary">Edit</a>
                     </td>
+                    @endcan
                 </tr>
                 @empty
                 <tr>

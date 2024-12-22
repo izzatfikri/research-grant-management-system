@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Academician;
 use App\Models\Milestone;
+use Illuminate\Support\Facades\Gate;
 
 class GrantController extends Controller
 {
@@ -15,14 +16,23 @@ class GrantController extends Controller
      */
     public function index()
     {
-        /*
-        $user = Auth::user();
-        $grants = Grant::whereHas('academicians', function ($query) use ($user) {
+        
+        if(Gate::allows('isAcademician')){
+            $grants = Grant::whereHas('academicians', function ($query) {
+                $query->where('user_id', Auth::user()->id)
+                      ->where('role', 'leader');
+            })->get();
+        } else {
+            $grants = Grant::all();
+        }
+
+        //$user = Auth::user();
+        /*$grants = Grant::whereHas('academicians', function ($query) use ($user) {
             $query->where('user_id', $user->id)
                   ->where('role', 'leader');
         })->get();*/
 
-        $grants = Grant::all();
+        //$grants = Grant::all();
 
         return view('grants.index', compact('grants'));
     }
