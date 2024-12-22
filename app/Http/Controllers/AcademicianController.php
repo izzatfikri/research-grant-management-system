@@ -45,7 +45,8 @@ class AcademicianController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),  // Hash the password
+            'password' => bcrypt($request->password), // Hash the password
+            'userCategory' => 'academician',  
         ]);
 
         // Step 3: Create Academician (for additional details)
