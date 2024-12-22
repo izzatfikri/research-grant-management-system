@@ -114,7 +114,8 @@ class GrantController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Grant $grant)
-    {
+    {   
+        if(Gate::allows('staffAdmin')){
         $validated = $request->validate([
             'grant_amount' => 'required|numeric',
             'grant_provider' => 'required|string|max:255',
@@ -125,7 +126,14 @@ class GrantController extends Controller
             'duration' => 'required|numeric',
             'members' => 'array', // Changed from 'required|array' to 'array' to allow only leader
         ]);
-    
+        }
+
+        elseif(Gate::allows('isAcademician')){
+            $validated = $request->validate([
+                'members' => 'array', // Changed from 'required|array' to 'array' to allow only leader
+            ]);
+        }
+
         // **Important:** Remove the following line to allow the method to continue
         // return $request->members;
     

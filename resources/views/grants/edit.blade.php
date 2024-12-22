@@ -10,6 +10,7 @@
             <form method="POST" action="{{ route('grants.update', $grant->id) }}">
                 @method('PUT')
                 @csrf
+                @can('staffAdmin', App\Models\User::class)
                 <div class="form-group mb-3">
                     <label class="form-label" for="grant_amount">Grant Amount</label>
                     <input type="number" class="form-control" name="grant_amount" value="{{ $grant->grant_amount }}">
@@ -38,6 +39,7 @@
                     <label class="form-label" for="duration">Duration (in months)</label>
                     <input type="number" class="form-control" name="duration" id="duration" value="{{ $grant->duration }}" readonly>
                 </div>
+                @endcan
                 <div class="form-group mb-3">
                     <label class="form-label" for="members">Project Members</label>
                     <div>

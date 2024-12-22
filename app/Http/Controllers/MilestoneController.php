@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Milestone;
 use Illuminate\Http\Request;
 use App\Models\Grant;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MilestoneController extends Controller
 {
@@ -13,7 +16,22 @@ class MilestoneController extends Controller
      */
     public function index()
     {
-        $milestones = Milestone::all();
+
+        if(Gate::allows('isAcademician')){
+            $grants = Grant::whereHas('academicians', function ($query) {
+                $query->where('user_id', Auth::id())
+                      ->where(function ($query) {
+                          $query->where('role', 'like', '%member%')
+                                ->orWhere('role', 'like', '%leader%');
+                      });
+            })->get();
+        
+            $milestones = Milestone::whereIn('grant_id', $grants->pluck('id')->toArray())->get();
+        }
+        elseif(Gate::allows('staffAdmin')){
+            $milestones = Milestone::all();
+        }
+        
         return view('milestones.index', compact('milestones'));
     }
 

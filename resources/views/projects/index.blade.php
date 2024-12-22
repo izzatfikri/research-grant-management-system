@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group">
-                            <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
+                            <a href="{{ route('projects.show', $grant->id) }}" class="btn btn-info">Show</a>
                         </div>
                     </td>
                 </tr>
