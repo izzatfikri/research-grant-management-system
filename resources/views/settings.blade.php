@@ -32,9 +32,10 @@
                     <div class="row align-items-center">
                       <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(./static/avatars/000m.jpg)"></span>
                       </div>
-                      <div class="col-auto"><a href="#" class="btn">
-                          Change avatar
-                        </a></div>
+                      <div class="col-auto">
+                        <input type="file" class="form-control" name="profile_picture">
+                        <a href="#" class="btn">Change avatar</a>
+                      </div>
                       <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
                           Delete avatar
                         </a></div>
@@ -42,8 +43,11 @@
                     <br>
                     <div class="row g-3">
                       <div class="col-md">
+                      <form method="POST" action="{{ route('settings.update', $user->id) }}">
+                        @method('PUT')
+                        @csrf
                         <div class="form-label">Your Name</div>
-                        <input type="text" class="form-control" value="Tabler">
+                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
                       </div>
                     </div>
                     <h3 class="card-title mt-4">Email</h3>
@@ -51,15 +55,16 @@
                     <div>
                       <div class="row g-2">
                         <div class="col-auto">
-                          <input type="text" class="form-control w-auto" value="paweluna@howstuffworks.com">
+                          <input type="text" class="form-control w-auto" name="email" value="{{ Auth::user()->email }}">
                         </div>
                       </div>
                     </div>
                     <h3 class="card-title mt-4">Password</h3>
-                    <p class="card-subtitle">You can set a permanent password if you don't want to use temporary login codes.</p>
+                    <p class="card-subtitle">You can set a new password for accessing the ResearchGrant Hub.</p>
                     <div>
-                      <input type="password" class="form-control" value="password">
+                      <input type="password" class="form-control" name="password" value="{{ Auth::user()->password }}">
                     </div>
+                    
                     <h3 class="card-title mt-4">Public profile</h3>
                     <p class="card-subtitle">Making your profile public means that anyone on the ResearchGrant Hub will be able to find
                       you.</p>
@@ -77,9 +82,10 @@
                       <a href="#" class="btn">
                         Cancel
                       </a>
-                      <a href="#" class="btn btn-primary">
+                      <button type="submit" class="btn btn-primary">
                         Submit
-                      </a>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
