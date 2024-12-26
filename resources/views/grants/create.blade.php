@@ -87,7 +87,9 @@
             var start = new Date(startDate);
             var end = new Date(endDate);
             var duration = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-            document.getElementById('duration').value = duration;
+            var days = (end - start) / (1000 * 60 * 60 * 24);
+            var durationInMonths = duration + (days % 30) / 30;
+            document.getElementById('duration').value = durationInMonths.toFixed(2);
         } else {
             document.getElementById('duration').value = '';
         }
