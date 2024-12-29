@@ -8,6 +8,7 @@ use App\Models\Grant;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 class MilestoneController extends Controller
 {
@@ -102,4 +103,21 @@ class MilestoneController extends Controller
         $milestone->delete();
         return redirect()->route('milestones.index')->with('success', 'Milestone deleted successfully.');
     }
+
+    public function dashboard(){
+        $milestoneCounts = Milestone::select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->get()
+            ->pluck('total', 'status');
+
+        // Ensure both statuses are represented in the data
+        $data = [
+            'Pending' => $milestoneCounts->get('Pending', 0),
+            'Completed' => $milestoneCounts->get('Completed', 0),
+        ];
+
+        return view('charts.pie', compact('data'));
+    }
+
+
 }

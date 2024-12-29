@@ -36,7 +36,7 @@
       @include('includes.navbar')
       <div class="page-wrapper">
         <!-- Page header -->
-        @include('includes.header')
+       
          <div class="page-body">
             <!-- Content -->
             <div class="content">
