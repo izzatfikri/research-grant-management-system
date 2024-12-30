@@ -26,7 +26,7 @@ class ProjectController extends Controller
     }
     public function show(Grant $grant)
     {
-        // Tunjuk projec member
+        // Tunjuk project member
         $members = $grant->academicians()->wherePivot('role', 'member')->get();
         $milestones = $grant->milestones()->get();
         return view('projects.show', compact('grant', 'members', 'milestones'));
