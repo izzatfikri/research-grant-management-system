@@ -2,16 +2,26 @@
 @section('title', 'Project')
 @section('content')
 <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="card mb-3">
         <div class="card-header bg-primary text-white text-center">
-            <h1>Project List</h1>
+            <h1>Projects List</h1>
         </div>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" style="background-color: #f2f2f2;">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No.</th>
                     <th>Project Title</th>
                     <th>Project Description</th>
                     <th>Start Date</th>
@@ -24,7 +34,7 @@
             <tbody>
                 @forelse($grants as $index => $grant)
                 <tr class="{{ $index % 2 == 0 ? 'bg-light' : 'bg-white' }}">
-                    <td>{{ $grant->id }}</td>
+                    <td>{{ $index + 1 }}</td>
                     <td>{{ $grant->project_title }}</td>
                     <td>{{ $grant->project_description }}</td>
                     <td>{{ $grant->start_date }}</td>

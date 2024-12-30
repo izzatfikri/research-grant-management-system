@@ -6,8 +6,8 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Staffs</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('staffs.index') }}">Staffs</a></li>
             <li class="breadcrumb-item active" aria-current="page">Staff Profile</li>
           </ol>
         </nav>

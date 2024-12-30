@@ -2,6 +2,16 @@
 @section('title', 'Staffs')
 @section('content')
 <div class="container">
+    <div class="row mb-4">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Staffs</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="card mb-3">
         <div class="card-header bg-primary text-white text-center">
             <h1>Staffs - List</h1>

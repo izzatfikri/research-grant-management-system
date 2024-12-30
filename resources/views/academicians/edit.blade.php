@@ -1,7 +1,18 @@
 @extends('layouts.tabler-template')
 @section('title', 'Edit Academician')
 @section('content')
-<div class="container mt-5">
+<div class="container">
+    <div class="row mb-4">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('academicians.index') }}">Academicians</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Academician</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="card">
         <div class="card-header bg-primary text-white text-center">
             <h1>Edit Academician</h1>

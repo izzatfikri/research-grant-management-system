@@ -1,7 +1,18 @@
 @extends('layouts.tabler-template')
 @section('title', 'Edit Grant')
 @section('content')
-<div class="container mt-5">
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('grants.index') }}">Grants</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Grant</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="card">
         <div class="card-header bg-primary text-white text-center">
             <h1>Edit Grant</h1>

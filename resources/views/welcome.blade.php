@@ -3,6 +3,15 @@
         <!-- Page body -->
         <div class="page-body">
           <div class="container-xl">
+          <div class="row">
+              <div class="col">
+                <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item active" aria-current="page">Home</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
             <div class="row row-deck row-cards">
               <div class="col-sm-6 col-lg-3">
                 <div class="card">

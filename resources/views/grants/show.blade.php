@@ -1,6 +1,17 @@
 @extends('layouts.tabler-template')
 @section('content')
-<div class="container mt-5">
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('grants.index') }}">Grants</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Grant Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
     <div class="card">
         <div class="card-header bg-primary text-white text-center">
             <h1 class="text-center">Grant Details</h1>
@@ -60,7 +71,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6" class="text-center">No data found</td>
+                    <td colspan="7" class="text-center">No data found</td>
                 </tr>
                 @endforelse
             </table>

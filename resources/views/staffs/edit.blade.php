@@ -1,28 +1,21 @@
 @extends('layouts.tabler-template')
 @section('content')
-<section style="background-color: #eee;">
-    <div class="container py-5">
+    <div class="container">
         <div class="row mb-4">
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Staffs</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('staffs.index') }}">Staffs</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Staff</li>
                     </ol>
                 </nav>
             </div>
         </div>
-        <div class="row mb-4">
-            <div class="col">
-                <a href="{{ route('staffs.index') }}" class="btn btn-secondary">Back to Staffs</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+        
                 <div class="card">
                     <div class="card-header bg-primary text-white text-center">
-                        <h1>Edit Academician</h1>
+                        <h1>Edit Staff</h1>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('staffs.update', $staff->id) }}" method="POST">
@@ -45,7 +38,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 @endsection
