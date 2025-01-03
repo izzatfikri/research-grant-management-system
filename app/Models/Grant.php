@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Grant extends Model
 {
 
+    use HasFactory;
     protected $fillable = ['grant_amount', 'grant_provider', 'project_title', 'project_description', 'start_date', 'end_date', 'duration'];
 
     public function academicians(){

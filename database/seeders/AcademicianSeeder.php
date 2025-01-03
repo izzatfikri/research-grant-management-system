@@ -17,12 +17,44 @@ class AcademicianSeeder extends Seeder
     {
         $academicians = [
             [
-                'name' => 'John Doe',
-                'staff_number' => 'SN001',
-                'email' => 'john.doe@example.com',
-                'college' => 'College of Science',
-                'department' => 'Physics',
-                'position' => 'Professor',
+                'name' => 'YUNUS BIN YUSOFF, ASSOC. PROF. TS. DR.',
+                'staff_number' => 'LN001',
+                'email' => 'yunusy@uniten.edu.my',
+                'college' => 'College of Computing & Informatics (CCI)',
+                'department' => 'Department of Computing (CCI)',
+                'position' => 'Assoc Prof.',
+            ],
+            [
+                'name' => 'AZLAN BIN YUSOF, MR',
+                'staff_number' => 'LN002',
+                'email' => 'azlany@uniten.edu.my',
+                'college' => 'College of Computing & Informatics (CCI)',
+                'department' => 'Department of Computing (CCI)',
+                'position' => 'Senior Lecturer',
+            ],
+            [
+                'name' => 'AZHANA AHMAD, TS. DR.',
+                'staff_number' => 'LN003',
+                'email' => 'azhana@uniten.edu.my',
+                'college' => 'College of Computing & Informatics (CCI)',
+                'department' => 'Department of Computing (CCI)',
+                'position' => 'Senior Lecturer',
+            ],
+            [
+                'name' => 'SUHAIMI BIN AB. RAHMAN, TS. DR.',
+                'staff_number' => 'LN004',
+                'email' => 'smie@uniten.edu.my',
+                'college' => 'College of Computing & Informatics (CCI)',
+                'department' => 'Department of Computing (CCI)',
+                'position' => 'Senior Lecturer',
+            ],
+            [
+                'name' => 'MARINA BTE MD. DIN, TS.',
+                'staff_number' => 'LN005',
+                'email' => 'marina@uniten.edu.my',
+                'college' => 'College of Computing & Informatics (CCI)',
+                'department' => 'Department of Computing (CCI)',
+                'position' => 'Senior Lecturer',
             ],
         ];
 
