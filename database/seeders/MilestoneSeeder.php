@@ -39,6 +39,15 @@ class MilestoneSeeder extends Seeder
                     'remarks' => 'Field testing scheduled for September.',
                 ],
             ],
+            'Sustainable Forestry Practices' => [
+                [
+                    'milestone_title' => 'Initial Research',
+                    'completion_date' => '2025-05-01',
+                    'deliverable' => 'Research Report',
+                    'status' => 'Pending',
+                    'remarks' => 'Initial research partially completed.',
+                ],
+            ],
         ];
 
         foreach ($milestonesData as $projectTitle => $milestones) {
